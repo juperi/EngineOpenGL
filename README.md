@@ -8,11 +8,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-[GENie](https://github.com/bkaradzic/GENie) - Project generator.
+* [Visual Studio 2017](https://visualstudio.microsoft.com/es/downloads/?rr=https%3A%2F%2Fwww.google.com%2F)
+* [GENie](https://github.com/bkaradzic/GENie) - Project generator.
+
 
 ### Built With
 
-* [GLFW](https://visualstudio.microsoft.com/es/downloads/?rr=https%3A%2F%2Fwww.google.com%2F) - Window, Render Context, Input.
+* [GLFW](http://www.glfw.org/) - Window, Render Context, Input.
 * [GLAD](http://glad.dav1d.de/) - OpenGL Functions.
 * [GLM](https://glm.g-truc.net/0.9.9/index.html) - Mathematic Library.
 * [STB](https://github.com/nothings/stb) - Load images Library.
