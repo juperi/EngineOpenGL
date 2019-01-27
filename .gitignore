@@ -1,0 +1,5 @@
+build/
+bin/
+libs/
+*.exe
+*.bat
