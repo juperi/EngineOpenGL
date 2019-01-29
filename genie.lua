@@ -14,6 +14,7 @@ local project_list = {
 	"AG08_04",
 	"AG08_05",
 	"AG09",
+	"AG10_01",
 	"EJ02_01",
 	"EJ02_02",
 	"EJ02_03",
@@ -76,7 +77,7 @@ local function new_project(name)
 			windowstargetplatformversion "10.0.17763.0"
 end
 
-solution "04MVID"
+solution "EngineOpenGL"
 	configurations{"debug","release"}
 	language("c++")
 	platforms{"x64"}

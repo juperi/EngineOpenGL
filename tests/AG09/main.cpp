@@ -1,4 +1,3 @@
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -12,7 +11,6 @@
 #include "camera.h"
 #include "model.h"
 
-#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
 uint32_t screen_width = 800;
