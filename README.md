@@ -27,6 +27,6 @@ A step by step series of examples that tell you how to get the environment runni
 1. Place the GENie .exe file in the project folder.
 2. From the project folder, open a console and run the following command: 
   ```
-  genie.exe vs2017
+  ./genie.exe vs2017
   ```
 3. A build/ folder has been generated. Find inside the .sln file to run the project.
