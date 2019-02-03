@@ -24,7 +24,7 @@ void main(){
 	vec3 viewDir = normalize(viewPos - fragPos);
 	vec3 halfwayDir = normalize(lightDir + viewDir);
 	
-	float spec = pow(max(dot(normal, halfwayDir), 0.0), shininess);
+	float spec = pow(max(dot(norm, halfwayDir), 0.0), shininess);
 	vec3 specular = specularStrenght * spec * lightColor;
 	
 	vec3 phong = (ambient + diffuse + specular) * objectColor;
