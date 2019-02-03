@@ -139,7 +139,7 @@ uint32_t createTexture(const char* path) {
 void render(const Shader& lightingShader, Shader& stencilShader, const uint32_t cubeVAO, const uint32_t quadVAO, 
 	const uint32_t tex1, const uint32_t tex2) {
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 	glm::vec4 color(1.0f, 0.0f, 0.0f, 1.0f);
 
@@ -150,7 +150,7 @@ void render(const Shader& lightingShader, Shader& stencilShader, const uint32_t 
 	lightingShader.set("viewPos", camera.getPosition());
 
 	lightingShader.set("light.position", lightPos);
-	lightingShader.set("light.ambient", 0.1f, 0.1f, 0.1f);
+	lightingShader.set("light.ambient", 0.2f, 0.2f, 0.2f);
 	lightingShader.set("light.diffuse", 0.5f, 0.5f, 0.5f);
 	lightingShader.set("light.specular", 1.0f, 1.0f, 1.0f);
 
@@ -237,11 +237,11 @@ void render(const Shader& lightingShader, Shader& stencilShader, const uint32_t 
 
 	// 2ND PASS _______________________________________________________
 	
-	stencilShader.use();
+	stencilShader.use(); // Paint in gray
 	stencilShader.set("view", view);
 	stencilShader.set("proj", proj);
 	glStencilMask(0x00);
-	glStencilFunc(GL_NOTEQUAL, 1, 0xFF); // When cube is not painted
+	glStencilFunc(GL_NOTEQUAL, 1, 0xFF); // When cube is not painted (it will paint only de outside part)
 	glDisable(GL_DEPTH_TEST);
 
 	/* 3 CUBE CONTOUR*/
@@ -250,11 +250,11 @@ void render(const Shader& lightingShader, Shader& stencilShader, const uint32_t 
 	model = glm::mat4(1.0f);	// Identity
 	model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.2f, 1.0f));
 	model = glm::scale(model, glm::vec3(0.45f, 0.45f, 0.45f));
-	lightingShader.set("model", model);
+	stencilShader.set("model", model);
 
 	// Normal matrix 1
 	normalMat = glm::inverse(glm::transpose(glm::mat3(model)));
-	lightingShader.set("normalMat", normalMat);
+	stencilShader.set("normalMat", normalMat);
 
 	glBindVertexArray(cubeVAO);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -263,11 +263,11 @@ void render(const Shader& lightingShader, Shader& stencilShader, const uint32_t 
 	model = glm::mat4(1.0f);	// Identity
 	model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.2f, 0.0f));
 	model = glm::scale(model, glm::vec3(0.45f, 0.45f, 0.45f));
-	lightingShader.set("model", model);
+	stencilShader.set("model", model);
 
 	// Normal matrix 2
 	normalMat = glm::inverse(glm::transpose(glm::mat3(model)));
-	lightingShader.set("normalMat", normalMat);
+	stencilShader.set("normalMat", normalMat);
 
 	glBindVertexArray(cubeVAO);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -276,18 +276,18 @@ void render(const Shader& lightingShader, Shader& stencilShader, const uint32_t 
 	model = glm::mat4(1.0f);	// Identity
 	model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.2f, -1.0f));
 	model = glm::scale(model, glm::vec3(0.45f, 0.45f, 0.45f));
-	lightingShader.set("model", model);
+	stencilShader.set("model", model);
 
 	// Normal matrix 3
 	normalMat = glm::inverse(glm::transpose(glm::mat3(model)));
-	lightingShader.set("normalMat", normalMat);
+	stencilShader.set("normalMat", normalMat);
 
 	glBindVertexArray(cubeVAO);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0); // No need to unbind it every time
 
-	glStencilMask(0x00);
+	glStencilMask(0xFF);
 	glEnable(GL_DEPTH_TEST);
 }
 
