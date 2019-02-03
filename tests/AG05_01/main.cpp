@@ -9,7 +9,6 @@
 #include <cstdint>
 #include "shader.h"
 
-#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
 glm::vec3 cubePositions[] = {

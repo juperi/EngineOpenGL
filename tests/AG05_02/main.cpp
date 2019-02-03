@@ -10,7 +10,6 @@
 #include "shader.h"
 #include "camera.h"
 
-#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
 uint32_t screen_width = 800;

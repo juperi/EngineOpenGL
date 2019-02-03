@@ -5,7 +5,6 @@
 #include <cstdint>
 #include "shader.h"
 
-#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
 void onChangeframeBufferSize(GLFWwindow* window, const int32_t width, 
