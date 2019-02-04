@@ -18,6 +18,7 @@ local project_list = {
 	"AG10_02",
 	"AG10_03",
 	"AG11",
+	"AG12",
 	"EJ02_01",
 	"EJ02_02",
 	"EJ02_03",
