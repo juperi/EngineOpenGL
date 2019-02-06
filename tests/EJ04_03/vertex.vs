@@ -9,5 +9,5 @@ out vec2 texCoord;
 void main() {
   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
   myColor = aColor;
-  texCoord = aTexCoord;
+  texCoord = aTexCoord *2; // Texture coords repeats 2 times in x & y (Image 4 times)
 }

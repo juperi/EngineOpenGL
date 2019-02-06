@@ -9,5 +9,5 @@ out vec2 texCoord;
 void main() {
   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
   myColor = aColor;
-  texCoord = aTexCoord;
+  texCoord = 1.0f - aTexCoord; // Avoid image vertical flip
 }

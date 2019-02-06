@@ -162,7 +162,7 @@ std::pair<uint32_t, uint32_t> createFBO() {
 	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
 		std::cout << "Error FrameBuffer Not Complete" << std::endl;
 	}
-
+	
 	return std::make_pair(fbo, textureColor);
 }
 
@@ -190,9 +190,12 @@ void render(const Shader& lightingShader, const Shader& fboShader, const uint32_
 	lightingShader.set("light.diffuse", 0.2f, 1.0f, 0.2f);
 	lightingShader.set("light.specular", 1.0f, 1.0f, 1.0f);
 
+	lightingShader.set("light.diffuse", 0.2f, 1.0f, 0.2f);
+
+	lightingShader.set("material.ambient", 1.0f, 0.5f, 0.31f);
+	lightingShader.set("material.shininess", 32.2f);
 	lightingShader.set("material.diffuse", 0);
 	lightingShader.set("material.specular", 1);
-	lightingShader.set("material.shininess", 32.0f);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, tex1);
