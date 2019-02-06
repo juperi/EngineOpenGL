@@ -15,7 +15,7 @@
 uint32_t screen_width = 800;
 uint32_t screen_height = 600;
 
-float lastFrame = 0.0f;
+float lastFrame = 0.0f;//
 
 bool firstMouse = true;
 float lastX = (float)screen_width / 2.0f;
